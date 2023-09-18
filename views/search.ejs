@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Equipment Search</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <header><%- include('partials/header.ejs') %></header>
+  <body>
+    <div class="search">
+      <h1>Search for Equipment</h1>
+      <form action="/search" method="post">
+        <label for="database">Select Database:</label>
+        <select name="database" id="database">
+          <option value="mongo">MongoDB</option>
+          <option value="postgres">PostgreSQL</option>
+        </select>
+        <br />
+        <label for="query">Search Query:</label>
+        <input type="text" name="query" id="query" required />
+        <br />
+        <button type="submit">Search</button>
+      </form>
+
+      <h2>Search Results:</h2>
+      <div id="searchResults">
+        <% if(typeof(equipment) !== 'undefined') { %>  
+          <%- include('partials/equipmentList.ejs', { equipment: equipment }) %>
+        <% } %>
+      </div>
+  </body>
+</html>
